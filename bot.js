@@ -5,7 +5,7 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/cool guy/;  botRegexDL = /^\/DDL/i;botRegexSalt = /^\/salt/;botRegexRules = /^\/rules/
+      botRegex = /^\/cool guy/; botRegexPat = /^\/Patrick/; botRegexDL = /^\/DDL/i;botRegexSalt = /^\/salt/;botRegexRules = /^\/rules/
       botRegexAd=/^\/advance/;botRegexGTA = /^\/gta/; botRegexSC = /^\/SDL/i; botODB = /(.*\s+)(.*odb)(\s+.*)/i; botDuck = /^\/duck/;
       botRegexP = /^\/PDL/i;  botRegexTw = /^\/twitch/i; botRegexSb = /^\/sub/; botRegexSh = /^\/shrug/; botRegexWk = /^\/users/; botRegexCC = /^\/cc/;
       botRegexSiege = /^\/siege/;
@@ -81,7 +81,12 @@ function respond() {
     this.res.writeHead(200);
     postMessage("OBJ*");
     this.res.end();
-  } 
+  }
+  else if(request.text && botRegexPat.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("http://i0.kym-cdn.com/photos/images/facebook/000/435/652/1f9.png");
+    this.res.end();
+  }
   else if(request.text && botDuck.test(request.text)) {
     this.res.writeHead(200);
     postMessage("http://media3.giphy.com/media/YCseTHF2I6CCA/giphy.gif");
