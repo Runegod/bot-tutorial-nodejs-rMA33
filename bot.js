@@ -44,7 +44,7 @@ function respond() {
     
     this.res.end();
   }  
-    else if(request.text && botRegexSC.test(request.text)) {
+    else if(request.text && botRegexSDL.test(request.text)) {
     this.res.writeHead(200);
     postMessage("http://daddyleagues.com/TLOA/team/"+request.text.substring(5,8)+"/schedule");
     this.res.end();
