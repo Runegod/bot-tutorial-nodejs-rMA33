@@ -5,7 +5,7 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-        botRegex = /^\/cool guy/; botRegexOW = /^\/ratings/; botRegexSalt = /^\/salt/; botRegexSDL = /^\/SDL/i; 
+        botRegex = /^\/cool guy/; botRegexOW = /^\/ratings/; botRegexSalt = /^\/salt/; botRegexSDL = /^\/SDL/i;  botRegexFour = /^\/4th/i;
         botRegexJN = /^\/trade/; botRegexRules = /^\/rules/; botODB = /(.*\s+)(.*odb)(\s+.*)/i; 
         botDuck = /^\/duck/; botRegexP = /^\/PDL/i;  botRegexTw = /^\/twitch/i;
   var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
@@ -24,6 +24,11 @@ function respond() {
   else if(request.text && botRegexSalt.test(request.text)) {
     this.res.writeHead(200);
     postMessage("https://i.imgur.com/B5BSVqH.png");
+    this.res.end();
+  } 
+  else if(request.text && botRegexFour.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://i.groupme.com/1430x1102.png.cf3f5ba64ceb45dfb305a82cc3c39066.large");
     this.res.end();
   } 
   else if(request.text && botRegexJN.test(request.text)) {
