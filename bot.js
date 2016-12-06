@@ -33,7 +33,7 @@ function respond() {
   } 
   else if(request.text && botRegexJN.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("To Submit a Trade click: https://goo.gl/forms/6Jelu8s4PaZvWqZT2");
+    postMessage("To Submit a Trade click: https://docs.google.com/spreadsheets/d/1XJeTmQXu95DUaQOoQFvMwj1rFkcEmFhhk7yYh6mo8jo/edit?usp=sharing");
     this.res.end();
   }
   else if(request.text && botRegexRules.test(request.text)) {
