@@ -5,11 +5,11 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-        botRegex = /^\/cool guy/; botRegexOW = /^\/ratings/; botRegexSalt = /^\/salt/; botRegexSDL = /^\/SDL/i;
-        botRegexJN = /^\/trade/; botODB = /(.*\s+)(.*odb)(\s+.*)/i; 
+        botRegex = /^\/cool guy/; botRegexOW = /^\/ratings/; botRegexSalt = /^\/rules/; botRegexSDL = /^\/SDL/i;
+        botRegexJN = /^\/trade/; botODB = /(.*\s+)(.*odb)(\s+.*)/i; botRegexDDL = /^\/ddl/i;
         botDuck = /^\/duck/; botRegexP = /^\/PDL/i;  botRegexTw = /^\/twitch/i;
   var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
-                ,"BAL","SD","DEN","MIN","ATL","KC","NYG","GB","DET","HOU","STL","CHI","CAR",
+                ,"BAL","LAC","DEN","MIN","ATL","KC","NYG","GB","DET","HOU","LAR","CHI","CAR",
                 "MIA","BUF","SF","WAS","NYJ","TB"]
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -23,25 +23,26 @@ function respond() {
   } 
   else if(request.text && botRegexSalt.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("https://i.imgur.com/B5BSVqH.png");
-    this.res.end();
-  }
-  else if(request.text && botRegexJN.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage("To Submit a Trade click: https://goo.gl/forms/n7jOMFyhV9marlwZ2");
+    postMessage("https://docs.google.com/document/d/1lIMC9qdpKX6hOwxauM9evJV4xpEJggV7nizYvgfWT2A/mobilebasic");
     this.res.end();
   }
   else if(request.text && botRegexP.test(request.text)) {
     this.res.writeHead(200);
     var req = request.text.substring(5,request.text.length);
     var rep = req.replace(/ /,"+");
-    postMessage("http://www.daddyleagues.com/LOA/players?name="+rep+"&position=all&team=all");
-    
+    postMessage("http://www.daddyleagues.com/MCF/players?name="+rep+"&position=all&team=all");
     this.res.end();
   }  
+else if(request.text && botRegexDDL.test(request.text)) {
+    this.res.writeHead(200);
+    var req = request.text.substring(5,request.text.length);
+    var rep = req.replace(/ /,"+");
+    postMessage("http://daddyleagues.com/MCF/team/"+request.text.substring(5,8)+"/");
+    this.res.end();
+  }
     else if(request.text && botRegexSDL.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("http://daddyleagues.com/LOA/team/"+request.text.substring(5,8)+"/schedule");
+    postMessage("http://daddyleagues.com/MCF/team/"+request.text.substring(5,8)+"/schedule");
     this.res.end();
   } 
   
