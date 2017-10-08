@@ -7,7 +7,8 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
         botRegex = /^\/cool guy/; botRegexOW = /^\/ratings/; botRegexSalt = /^\/rules/; botRegexSDL = /^\/SDL/i;
         botRegexJN = /^\/trade/; botODB = /(.*\s+)(.*odb)(\s+.*)/i; botRegexDDL = /^\/ddl/i;
-        botDuck = /^\/duck/; botRegexP = /^\/PDL/i;  botRegexTw = /^\/twitch/i;
+        botDuck = /^\/duck/; botRegexP = /^\/PDL/i;  botRegexTw = /^\/twitch/i; botRegexUsers = /^\/users/;
+  botRegexSub = /^\/sub/;
   var teamAb = ["NE","NO","ARI","PHI","CLE","TEN","OAK","DAL","IND","SEA","CIN","PIT","JAC"
                 ,"BAL","LAC","DEN","MIN","ATL","KC","NYG","GB","DET","HOU","LAR","CHI","CAR",
                 "MIA","BUF","SF","WAS","NYJ","TB"]
@@ -20,7 +21,17 @@ function respond() {
     this.res.writeHead(200);
     postMessage("www.daddyleagues.com/maddenrating/");
     this.res.end();
-  } 
+  }
+    else if(request.text && botRegexUsers.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://i.imgur.com/qD1GOFY.jpg");
+    this.res.end();
+  }
+  else if(request.text && botRegexSub.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("https://reddit.com/r/MCF_Revival/");
+    this.res.end();
+  }
   else if(request.text && botRegexSalt.test(request.text)) {
     this.res.writeHead(200);
     postMessage("https://docs.google.com/document/d/1lIMC9qdpKX6hOwxauM9evJV4xpEJggV7nizYvgfWT2A/mobilebasic");
